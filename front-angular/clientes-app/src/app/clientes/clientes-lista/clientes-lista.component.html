@@ -1,0 +1,40 @@
+<h1 class="mt-4">Clientes</h1>
+<ol class="breadcrumb mb-4">
+  <li class="bbreadcrumb-item active">Consulta</li>
+</ol>
+
+<div class="row">
+  <div class="col-md-2">
+    <button class="btn btn-warning" (click)="novoCadastro()">
+      <i class="fa fa-plus"></i>Novo
+    </button>
+  </div>
+</div>
+<br>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <table class="table tabble-condensed table-rover">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>CPF</th>
+            <th>data de Cadastro</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let cliente of clientes">
+            <td>{{cliente.id}}</td>
+            <td>{{cliente.nome}}</td>
+            <td>{{cliente.cpf}}</td>
+            <td>{{cliente.dataCadastro}}</td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</div>
