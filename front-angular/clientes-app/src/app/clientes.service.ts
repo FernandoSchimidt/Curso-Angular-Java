@@ -22,4 +22,7 @@ export class ClientesService {
   getClienteById(id: number): Observable<Cliente> {
     return this.http.get<any>(`http://localhost:8080/api/clientes/${id}`);
   }
+  atualizar(cliente: Cliente): Observable<any> {
+    return this.http.put<Cliente>(`http://localhost:8080/api/clientes/${cliente.id}`, cliente);
+  }
 }
