@@ -14,6 +14,17 @@
 <div class="container">
   <div class="row">
     <div class="col-md-12">
+
+      <div class="alert alert-success" role="alert" *ngIf="mensagemSucesso">
+        {{ mensagemSucesso}}
+      </div>
+      <div class="alert alert-danger" role="alert" *ngIf="mensagemErro"></div>
+      {{ mensagemErro }}
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
       <table class="table tabble-condensed table-rover">
         <thead>
           <tr>
@@ -35,9 +46,11 @@
                 <i class="fa fa-edit"></i>
               </button>
 
-              <button class="btn btn-danger" data-toggle="modal" data-target="modalDelecao">
+              <button class="btn btn-danger" (click)="preparaDelecao(cliente)" data-toggle="modal"
+                data-target="#modalDelecao">
                 <i class="fa fa-trash"></i>
               </button>
+
             </td>
           </tr>
         </tbody>
@@ -51,8 +64,12 @@
         <div class="modal-header">
           <h4>Confirmação</h4>
         </div>
-        <div class="modal-body">
-          <p>Helloi</p>
+        <div class="modal-body" *ngIf="clienteSel">
+          Confirma a deleção do(a) cliente: {{ clienteSel.nome }} ?
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-success" data-dismiss="modal" (click)="deletarCliente()">Confirmar</button>
+          <button class="btn btn-default" data-dismiss="modal">Camcelar</button>
         </div>
       </div>
     </div>
