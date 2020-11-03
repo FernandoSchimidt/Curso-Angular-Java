@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Cliente } from 'src/app/clientes/Cliente';
 import { ServicoPrestadoService } from 'src/app/servico-prestado.service';
 import { ClientesService } from '../../clientes.service'
@@ -18,11 +19,15 @@ export class ServicoPrestadoFormComponent implements OnInit {
 
   constructor(
     private clienteService: ClientesService,
-    private servicoPrestadoService: ServicoPrestadoService
+    private servicoPrestadoService: ServicoPrestadoService,
+    private router: Router
   ) {
     this.servico = new ServicoPrestado()
   }
 
+  servicos() {
+    this.router.navigate(['/servico-prestado-listagem'])
+  }
   ngOnInit(): void {
     this, this.clienteService
       .getClientes()
