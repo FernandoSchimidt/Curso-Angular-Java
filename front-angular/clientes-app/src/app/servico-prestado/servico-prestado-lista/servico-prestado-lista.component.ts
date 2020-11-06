@@ -27,7 +27,7 @@ export class ServicoPrestadoListaComponent implements OnInit {
   }
 
   novoServico() {
-    this.router.navigate(['/servico-prestado-form'])
+    this.router.navigate(['/servico-prestado/form'])
   }
 
   consultar() {
