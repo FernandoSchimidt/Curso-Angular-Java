@@ -17,12 +17,20 @@ export class LoginComponent {
   mensagemSucesso: string;
   mensagemSenha: string;
   cadastrando: boolean;
-  errors:String[];
+  errors: String[];
   constructor(private router: Router,
     private authService: AuthService) { }
 
   onSubmit() {
-    this.router.navigate(['/home'])
+    this.authService
+      .tentarLogar(this.username, this.password)
+      .subscribe(res => {
+        this.router.navigate(['/home'])
+      }, erroResponse => {
+        {
+          this.errors = ['Usuario e/ou senha incorretos!']
+        }
+      })
   }
 
   preparaCadastrar(event) {
