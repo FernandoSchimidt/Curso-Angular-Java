@@ -25,6 +25,7 @@ export class LoginComponent {
     this.authService
       .tentarLogar(this.username, this.password)
       .subscribe(res => {
+        console.log(res)
         this.router.navigate(['/home'])
       }, erroResponse => {
         {

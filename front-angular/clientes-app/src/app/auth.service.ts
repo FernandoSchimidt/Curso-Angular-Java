@@ -11,7 +11,7 @@ import { environment } from '../environments/environment';
 export class AuthService {
 
   apiUrl: string = environment.apiURL + "/api/usuarios"
-  tokenURL: string = environment.apiURL + environment.tokenURL
+  tokenURL: string = environment.apiURL + environment.obterTokenURL
   clientId: string = environment.clientId
   clientSecret: string = environment.clientSecret
 
@@ -26,13 +26,14 @@ export class AuthService {
     const params = new HttpParams()
       .set('username', username)
       .set('password', password)
-      .set('grant_type', password)
+      .set('grant_type', 'password')
 
     const headers = {
       'Authorization': 'Basic ' + btoa(`${this.clientId}:${this.clientSecret}`),
-      'Content-Type':'application/x-www-form-urlencoded'
+      'Content-Type': 'application/x-www-form-urlencoded'
     }
 
-    return this.http.post(this.tokenURL, params.toString(), { headers })
+    return this.http.post(this.tokenURL, params.toString(), { headers: headers })
+
   }
 }
